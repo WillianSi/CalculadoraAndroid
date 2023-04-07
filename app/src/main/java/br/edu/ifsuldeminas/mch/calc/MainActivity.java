@@ -24,20 +24,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             buttonPorcento,buttonVirgula,
             buttonReset,buttonDelete;
     private TextView textViewResultado,textViewUltimaExpressao;
-
+    Double resultadoAnterior = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Inicializa os componentes da interface
         IniciarComponentes();
+        // Oculta a ActionBar
         getSupportActionBar().hide();
 
+        // Associa os botões de operações matemáticas aos seus respectivos listeners
         buttonSoma.setOnClickListener(this);
         buttonSubtracao.setOnClickListener(this);
         buttonMultiplicacao.setOnClickListener(this);
         buttonDivisao.setOnClickListener(this);
         buttonPorcento.setOnClickListener(this);
         buttonVirgula.setOnClickListener(this);
+
+        // Associa os botões numéricos aos seus respectivos listeners
         buttonZero.setOnClickListener(this);
         buttonUm.setOnClickListener(this);
         buttonDois.setOnClickListener(this);
@@ -49,57 +54,66 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonOito.setOnClickListener(this);
         buttonNove.setOnClickListener(this);
 
+        // Associa o botão "C" ao listener que limpa a expressão e o resultado
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 textViewUltimaExpressao.setText("");
                 textViewResultado.setText("");
+                resultadoAnterior = null;
             }
         });
 
+        // Associa o botão "<-" ao listener que remove o último caractere da expressão
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView expresao = findViewById(R.id.textViewUltimaExpressaoID);
-                String string = expresao.getText().toString();
-                if (!string.isEmpty()){
-                    byte v0 = 0;
-                    int v1 = string.length()-1;
-                    String txtEpresao = string.substring(v0,v1);
-                    expresao.setText(txtEpresao);
+                // Obtém a expressão atual
+                String string = textViewUltimaExpressao.getText().toString();
+                // Verifica se a expressão não está vazia
+                if (!string.isEmpty()) {
+                    // Remove o último caractere da expressão
+                    String txtExpressao = string.substring(0, string.length() - 1);
+                    textViewUltimaExpressao.setText(txtExpressao);
                 }
+                // Limpa o resultado
                 textViewResultado.setText("");
             }
         });
 
+        // Associa o botão "=" ao listener que avalia a expressão e exibe o resultado
         buttonIgual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calculable avaliadorExpressao = null;
                 try {
+                    // Cria um objeto ExpressionBuilder para avaliar a expressão
                     avaliadorExpressao = new ExpressionBuilder(textViewUltimaExpressao.
                             getText().toString()).build();
+                    // Avalia a expressão e obtém o resultado
                     Double resultado = avaliadorExpressao.calculate();
-                   long longResult = (long) resultado.doubleValue();;
+                    // Arredonda o resultado para baixo, caso seja um número inteiro
+                    long longResult = (long) resultado.doubleValue();
+                    // Verifica se o resultado é um número inteiro
                     if (resultado == (double)longResult){
+                        // Exibe o resultado como inteiro
                         textViewResultado.setText((CharSequence) String.valueOf(longResult));
+                        resultadoAnterior = Double.valueOf(longResult);
                     }else{
+                        // Exibe o resultado com casas decimais
                         textViewResultado.setText((CharSequence) String.valueOf(resultado));
+                        resultadoAnterior = resultado;
                     }
-
-                    // Limpa o conteúdo da TextView "textViewUltimaExpressao"
-                    textViewUltimaExpressao.setText("");
-
-                    // Atualiza o valor atual do TextView "textViewResultado" com o resultado calculado
-                    String resultadoAtual = textViewResultado.getText().toString();
-                    textViewUltimaExpressao.setText(resultadoAtual + textViewUltimaExpressao.getText().toString());
                 } catch (Exception e) {
+                    // Em caso de erro, exibe uma mensagem no log do sistema
                     Log.d(TAG, e.getMessage());
                 }
             }
         });
     }
 
+    // Método responsável por inicializar
+    // os componentes da interface
     private void IniciarComponentes(){
         textViewResultado = findViewById(R.id.textViewResultadoID);
         textViewUltimaExpressao = findViewById(R.id.textViewUltimaExpressaoID);
@@ -123,39 +137,75 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonNove = findViewById(R.id.buttonNoveID);
         buttonZero = findViewById(R.id.buttonZeroID);
     }
+    // Método responsável por adicionar uma expressão à tela
     public void AcresentarExprecao(String string, boolean limpar){
+        // Verifica se o componente TextView correspondente
+        // ao resultado está vazio
         if (textViewResultado.getText().equals("")){
+            // Se estiver, limpa o componente TextView correspondente à
+            // última expressão digitada
             textViewUltimaExpressao.setText(" ");
         }
+        // Verifica se a expressão a ser adicionada deve limpar o componente
+        // TextView correspondente ao resultado
         if (limpar){
+            // Se deve ser limpa, limpa a caixa de texto de resultado e adiciona a
+            // string na caixa de texto de última expressão
             textViewResultado.setText(" ");
             textViewUltimaExpressao.append(string);
         }else {
+            // Se não deve ser limpa, obtém a última expressão da caixa de texto de última expressão
             String ultimaExpressao = textViewUltimaExpressao.getText().toString();
-            if (!ultimaExpressao.isEmpty() && (ultimaExpressao.endsWith("+") || ultimaExpressao.endsWith("-") || ultimaExpressao.endsWith("*") || ultimaExpressao.endsWith("/"))) {
+            // Verifica se a última expressão não está vazia e se termina com um operador
+            if (!ultimaExpressao.isEmpty() && (ultimaExpressao.endsWith("+") ||
+                    ultimaExpressao.endsWith("-") || ultimaExpressao.endsWith("*")
+                    || ultimaExpressao.endsWith("/"))) {
+                // Se terminar com um operador, remove o operador final da última expressão
                 ultimaExpressao = ultimaExpressao.substring(0, ultimaExpressao.length() - 1);
             }
+            // Adiciona a string na última expressão e define a caixa de texto de resultado como vazia
             textViewUltimaExpressao.setText(ultimaExpressao + string);
             textViewResultado.setText(" ");
         }
     }
 
+    // Verifica qual botão foi clicado e adiciona o operador de soma na última expressão
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.buttonSomaID:
+                if (resultadoAnterior != null) {
+                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
+                    textViewUltimaExpressao.setText(resultadoAnteriorString);
+                }
                 AcresentarExprecao("+",false);
                 break;
             case R.id.buttonSubtracaoID:
+                if (resultadoAnterior != null) {
+                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
+                    textViewUltimaExpressao.setText(resultadoAnteriorString);
+                }
                 AcresentarExprecao("-",false);
                 break;
             case R.id.buttonMultiplicacaoID:
+                if (resultadoAnterior != null) {
+                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
+                    textViewUltimaExpressao.setText(resultadoAnteriorString);
+                }
                 AcresentarExprecao("*",false);
                 break;
             case R.id.buttonDivisaoID:
+                if (resultadoAnterior != null) {
+                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
+                    textViewUltimaExpressao.setText(resultadoAnteriorString);
+                }
                 AcresentarExprecao("/",false);
                 break;
             case R.id.buttonPorcentoID:
+                if (resultadoAnterior != null) {
+                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
+                    textViewUltimaExpressao.setText(resultadoAnteriorString);
+                }
                 AcresentarExprecao("%",false);
                 break;
             case R.id.buttonVirgulaID:
