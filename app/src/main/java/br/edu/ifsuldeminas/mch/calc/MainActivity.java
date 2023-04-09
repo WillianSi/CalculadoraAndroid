@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             buttonPorcento,buttonVirgula,
             buttonReset,buttonDelete;
     private TextView textViewResultado,textViewUltimaExpressao;
-    Double resultadoAnterior = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,24 +34,200 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().hide();
 
         // Associa os botões de operações matemáticas aos seus respectivos listeners
-        buttonSoma.setOnClickListener(this);
-        buttonSubtracao.setOnClickListener(this);
-        buttonMultiplicacao.setOnClickListener(this);
-        buttonDivisao.setOnClickListener(this);
-        buttonPorcento.setOnClickListener(this);
-        buttonVirgula.setOnClickListener(this);
+        buttonSoma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonSubtracao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonMultiplicacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonDivisao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonVirgula.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
 
         // Associa os botões numéricos aos seus respectivos listeners
-        buttonZero.setOnClickListener(this);
-        buttonUm.setOnClickListener(this);
-        buttonDois.setOnClickListener(this);
-        buttonTres.setOnClickListener(this);
-        buttonQuatro.setOnClickListener(this);
-        buttonCinco.setOnClickListener(this);
-        buttonSeis.setOnClickListener(this);
-        buttonSete.setOnClickListener(this);
-        buttonOito.setOnClickListener(this);
-        buttonNove.setOnClickListener(this);
+        buttonZero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonUm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonDois.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonTres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonQuatro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonCinco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonSeis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonSete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonOito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
+        buttonNove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Obtém o número digitado
+                String numero = ((Button) view).getText().toString();
+                // Obtém a expressão atual
+                String expressao = textViewUltimaExpressao.getText().toString();
+                // Adiciona o número à expressão
+                String novaExpressao = expressao + numero;
+                textViewUltimaExpressao.setText(novaExpressao);
+            }
+        });
 
         // Associa o botão "C" ao listener que limpa a expressão e o resultado
         buttonReset.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +235,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 textViewUltimaExpressao.setText("");
                 textViewResultado.setText("");
-                resultadoAnterior = null;
             }
         });
 
@@ -88,21 +262,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Calculable avaliadorExpressao = null;
                 try {
                     // Cria um objeto ExpressionBuilder para avaliar a expressão
-                    avaliadorExpressao = new ExpressionBuilder(textViewUltimaExpressao.
-                            getText().toString()).build();
+                    avaliadorExpressao = new ExpressionBuilder(textViewUltimaExpressao.getText().toString()).build();
                     // Avalia a expressão e obtém o resultado
-                    Double resultado = avaliadorExpressao.calculate();
+                    double resultado = avaliadorExpressao.calculate();
                     // Arredonda o resultado para baixo, caso seja um número inteiro
-                    long longResult = (long) resultado.doubleValue();
+                    long longResult = (long) resultado;
+                    textViewUltimaExpressao.setText("");
                     // Verifica se o resultado é um número inteiro
                     if (resultado == (double)longResult){
                         // Exibe o resultado como inteiro
                         textViewResultado.setText((CharSequence) String.valueOf(longResult));
-                        resultadoAnterior = Double.valueOf(longResult);
                     }else{
                         // Exibe o resultado com casas decimais
                         textViewResultado.setText((CharSequence) String.valueOf(resultado));
-                        resultadoAnterior = resultado;
                     }
                 } catch (Exception e) {
                     // Em caso de erro, exibe uma mensagem no log do sistema
@@ -112,8 +284,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    // Método responsável por inicializar
-    // os componentes da interface
+    // Método responsável por inicializar os componentes da interface
     private void IniciarComponentes(){
         textViewResultado = findViewById(R.id.textViewResultadoID);
         textViewUltimaExpressao = findViewById(R.id.textViewUltimaExpressaoID);
@@ -139,32 +310,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     // Método responsável por adicionar uma expressão à tela
     public void AcresentarExprecao(String string, boolean limpar){
-        // Verifica se o componente TextView correspondente
-        // ao resultado está vazio
+        // Verifica se o componente TextView correspondente ao resultado está vazio
         if (textViewResultado.getText().equals("")){
-            // Se estiver, limpa o componente TextView correspondente à
-            // última expressão digitada
+            // Se estiver, limpa o componente TextView correspondente à última expressão digitada
             textViewUltimaExpressao.setText(" ");
         }
-        // Verifica se a expressão a ser adicionada deve limpar o componente
-        // TextView correspondente ao resultado
+        // Verifica se a expressão a ser adicionada deve limpar o componente TextView correspondente ao resultado
         if (limpar){
-            // Se deve ser limpa, limpa a caixa de texto de resultado e adiciona a
-            // string na caixa de texto de última expressão
+            // Se deve ser limpa, limpa a caixa de texto de resultado e adiciona a string na caixa de texto de última expressão
             textViewResultado.setText(" ");
             textViewUltimaExpressao.append(string);
         }else {
-            // Se não deve ser limpa, obtém a última expressão da caixa de texto de última expressão
-            String ultimaExpressao = textViewUltimaExpressao.getText().toString();
-            // Verifica se a última expressão não está vazia e se termina com um operador
-            if (!ultimaExpressao.isEmpty() && (ultimaExpressao.endsWith("+") ||
-                    ultimaExpressao.endsWith("-") || ultimaExpressao.endsWith("*")
-                    || ultimaExpressao.endsWith("/"))) {
-                // Se terminar com um operador, remove o operador final da última expressão
-                ultimaExpressao = ultimaExpressao.substring(0, ultimaExpressao.length() - 1);
-            }
-            // Adiciona a string na última expressão e define a caixa de texto de resultado como vazia
-            textViewUltimaExpressao.setText(ultimaExpressao + string);
+            // Caso contrário, adiciona o texto do componente TextView correspondente ao resultado
+            // na caixa de texto de última expressão e, em seguida, adiciona a string.
+            textViewUltimaExpressao.append(textViewResultado.getText());
+            textViewUltimaExpressao.append(string);
             textViewResultado.setText(" ");
         }
     }
@@ -174,38 +334,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.buttonSomaID:
-                if (resultadoAnterior != null) {
-                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
-                    textViewUltimaExpressao.setText(resultadoAnteriorString);
-                }
                 AcresentarExprecao("+",false);
                 break;
             case R.id.buttonSubtracaoID:
-                if (resultadoAnterior != null) {
-                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
-                    textViewUltimaExpressao.setText(resultadoAnteriorString);
-                }
                 AcresentarExprecao("-",false);
                 break;
             case R.id.buttonMultiplicacaoID:
-                if (resultadoAnterior != null) {
-                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
-                    textViewUltimaExpressao.setText(resultadoAnteriorString);
-                }
                 AcresentarExprecao("*",false);
                 break;
             case R.id.buttonDivisaoID:
-                if (resultadoAnterior != null) {
-                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
-                    textViewUltimaExpressao.setText(resultadoAnteriorString);
-                }
                 AcresentarExprecao("/",false);
                 break;
             case R.id.buttonPorcentoID:
-                if (resultadoAnterior != null) {
-                    String resultadoAnteriorString = Double.toString(resultadoAnterior);
-                    textViewUltimaExpressao.setText(resultadoAnteriorString);
-                }
                 AcresentarExprecao("%",false);
                 break;
             case R.id.buttonVirgulaID:
